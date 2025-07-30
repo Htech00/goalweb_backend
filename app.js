@@ -45,10 +45,22 @@ const goalRoutes = require('./routes/goalRoute');
 const app = express();
 const port = process.env.PORT || 4000;
 
+const allowedOrigins = [
+  "https://goalweb-frontend.vercel.app",
+  "http://localhost:5174"
+];
+
 app.use(cors({
-  origin: process.env.CLIENT_URL,
-  credentials: true,
+  origin: function(origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      return callback(new Error("CORS policy does not allow this origin."), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true
 }));
+
 app.use(express.json());
 
 app.use('/api/goals', goalRoutes);
