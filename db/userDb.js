@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const goalSchema = require('../models/goalSchema');
+const goalSchema = require('../models/Goal');
 
 const connections = {}; // caches per-user mongoose connections
 
