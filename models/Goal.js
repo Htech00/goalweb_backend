@@ -14,4 +14,4 @@ const goalSchema = new mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model("Goals", goalSchema);
+module.exports = goalSchema;
