@@ -9,14 +9,15 @@ router.post("/",addNewGoal);
 // Create a route for getAllGoals
 router.get("/all", getAllGoals);
 
-// Create a route for getEachGoal by :Id
-router.get("/:id", getEachGoal)
 
 //Create a route for ongoingGoals
 router.get("/ongoing",ongoingGoals)
 
 // Create a route of completedGoals
 router.get("/completed", completedGoals)
+
+// Create a route for getEachGoal by :Id
+router.get("/:id", getEachGoal)
 
 // Create a route for updateProgress
 router.patch("/:id/progress", updateProgress);
