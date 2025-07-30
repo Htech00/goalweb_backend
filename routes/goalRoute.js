@@ -7,7 +7,7 @@ const {
   completedGoals,
   updateProgress,
   deleteGoal,
-} = require('../controllers/goalController');
+} = require('../controller/goalController');
 const router = express.Router();
 
 // optionally extract userId via middleware:
