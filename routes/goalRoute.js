@@ -1,7 +1,7 @@
 const express = require("express");
 const { addNewGoal, getAllGoals, getEachGoal, completedGoals, updateProgress, deleteGoal, ongoingGoals } = require("../controller/goalController");
 
-const router = express.Router();
+const router = express.Router()
 
 // Create a route for addNewGoal
 router.post("/",addNewGoal);

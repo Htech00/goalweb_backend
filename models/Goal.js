@@ -9,9 +9,14 @@ const goalSchema = new mongoose.Schema({
     progress: {
         type: Number,
         required: true,
-        min:0,
+        min: 0,
         max: 100,
     },
-})
+    userId: { // new field
+        type: String,
+        required: true
+    }
+});
+
 
 module.exports = mongoose.model("Goals", goalSchema);
