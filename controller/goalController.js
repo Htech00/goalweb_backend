@@ -96,20 +96,23 @@ const updateProgress = async (req, res) => {
     const goal = await goalsModel.findOne({ _id: goalId, userId: userId });
 
     if (!goal) {
-      return res.status(404).json({ error: "Goal not found or you do not have permission" });
+      return res
+        .status(404)
+        .json({ error: "Goal not found or you do not have permission" });
     }
 
     // Update progress
     goal.progress = progress;
     await goal.save();
 
-    return res.status(200).json({ message: "Progress updated successfully", goal });
+    return res
+      .status(200)
+      .json({ message: "Progress updated successfully", goal });
   } catch (error) {
     console.error("Error updating progress:", error);
     return res.status(500).json({ error: "Server error updating progress" });
   }
 };
-
 
 // ===== CONTROLLER FOR DELETING GOAL BY ID ======
 
@@ -123,10 +126,15 @@ const deleteGoal = async (req, res) => {
     }
 
     // Find the goal that belongs to this user and delete it
-    const deletedGoal = await goalsModel.findOneAndDelete({ _id: goalId, userId: userId });
+    const deletedGoal = await goalsModel.findOneAndDelete({
+      _id: goalId,
+      userId: req.body.userId,
+    });
 
     if (!deletedGoal) {
-      return res.status(404).json({ error: "Goal not found or you do not have permission" });
+      return res
+        .status(404)
+        .json({ error: "Goal not found or you do not have permission" });
     }
 
     res.status(200).json({ message: "Goal deleted successfully" });
@@ -134,7 +142,6 @@ const deleteGoal = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
-
 
 module.exports = {
   addNewGoal,
